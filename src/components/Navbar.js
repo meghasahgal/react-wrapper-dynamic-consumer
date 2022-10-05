@@ -1,13 +1,17 @@
 import horoscopesObj from '../data/horoscopes';
+import {useContext} from 'react';
+import {HoroscopeContext} from '../context/HoroscopeContext';
 
 const Navbar = () => {
   const horoscopes = Object.keys(horoscopesObj);
-
+  const {setCurrentSign} = useContext(HoroscopeContext);
+  console.log('rerendering NavBar...')
   return (
     <nav>
       {horoscopes.map(sign => (
-        <span key={sign}>
-        {sign}
+        <span
+        onClick={()=>{setCurrentSign(sign)}}
+        key={sign}>{sign}
         </span>
       ))}
     </nav>
